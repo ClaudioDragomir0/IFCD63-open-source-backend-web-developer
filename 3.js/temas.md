@@ -1172,8 +1172,8 @@ El API de `fetch` permite realizar peticiones HTTP desde JavaScript.
 
 - **`export` vs `export default`**
 
-  > [!NOTE]
-  > Solo puede haber un export default por archivo.
+> [!NOTE]
+> Solo puede haber un export default por archivo.
   
   ```js
   // utils.js
@@ -1228,15 +1228,27 @@ El API de `fetch` permite realizar peticiones HTTP desde JavaScript.
 
    - Importa estilos en JS:
 
-     ```js
-     import styles from './Card.module.css';
-     ```
+    ```js
+    import styles from './Card.module.css';
+    ```
+
+> [!NOTE] 
+> Tuvimos que crear una función `loadCSS()` para poder cargar la hoja de estilos
+> de forma dinámica usando `fetch`
+
    - En tu componente, aplica clases:
 
-     ```js
-     cardEl.className = styles.card;
-     ```
+    ```js
+    cardEl.className = styles.card;
+    ```
+
+> [!NOTE]  
+> Hemos añadido los estilos usando `adoptedStyleSheets` y en caso de que falle
+> se crearía un bloque `<style>` con el CSS (en el head)
+
    - Esto evita colisiones y permite scope local por componente.
+
+  [Lab 2 resuelto](./labs/lab_2/)
 
 ---
 
