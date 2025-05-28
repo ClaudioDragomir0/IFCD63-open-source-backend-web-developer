@@ -1,0 +1,203 @@
+.card {
+
+  position: relative;
+
+  background: #fff;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+  max-width: 100%;
+
+  margin: 24px auto;
+
+  transition: box-shadow 0.2s, transform 0.2s;
+
+}
+
+.card:hover {
+
+  box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+
+  transform: translateY(-4px);
+
+}
+
+.card img {
+
+  width: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  height: 220px;
+
+}
+
+.card-body {
+
+  padding: 1.5rem;
+
+  background: #fff;
+
+  color: #222;
+
+}
+
+.card-body h2 {
+
+  margin: 0 0 0.5rem 0;
+
+  font-size: 1.3rem;
+
+  color: #222;
+
+}
+
+.card-body .price {
+
+  position: absolute;
+
+  top: 16px;
+
+  right: 16px;
+
+  background: #222;
+
+  color: #fff;
+
+  padding: 0.4em 1em;
+
+  border-radius: 20px;
+
+  font-weight: bold;
+
+  font-size: 1rem;
+
+  z-index: 2;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+
+}
+
+.card-body .desc {
+
+  margin: 1rem 0;
+
+  color: #444;
+
+  font-size: 1rem;
+
+}
+
+.card-body button {
+
+  background: #007bff;
+
+  color: #fff;
+
+  border: none;
+
+  padding: 0.7em 1.5em;
+
+  border-radius: 8px;
+
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  transition: background 0.2s;
+
+}
+
+.card-body button:hover {
+
+  background: #0056b3;
+
+}
+
+/* Menor a 767px */
+
+
+
+@media (min-width: 767px) {
+
+  .card {
+
+    max-width: 95vw;
+
+    display: block;
+
+  }
+
+  .card img {
+
+    height: 200px;
+
+  }
+
+}
+
+
+
+/* Mayor a 768px */
+
+
+
+@media (min-width: 768px) {
+
+  .card {
+
+    display: flex;
+
+    max-width: 600px;
+
+  }
+
+  .card img {
+
+    width: 50%;
+
+    height: auto;
+
+    min-height: 100%;
+
+    object-fit: cover;
+
+  }
+
+  .card-body {
+
+    width: 50%;
+
+    padding: 2rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+  }
+
+}
+
+
+
+/* Tamaño grande 1200px */
+
+
+
+@media (min-width: 1200px) {
+
+  .card {
+
+    max-width: 600px;
+
+  }
+
+}
