@@ -1265,8 +1265,18 @@ El API de `fetch` permite realizar peticiones HTTP desde JavaScript.
 
 ## Parte IV — Fundamentos de Node.js
 
+- [Descargar Node 22 LTS](https://nodejs.org/en)
+
+## Alternativas a Node
+
+- **Node** es el entorno de ejecución (runtime) de JS con más años en desarrollo: 15 [1](https://en.wikipedia.org/wiki/Node.js)
+- Bun solo tiene 3 años [2](https://en.wikipedia.org/wiki/Bun_(software)). [Descargar Bun JS](https://bun.sh/)
+- Deno tiene 7 años de existencia [3]https://en.wikipedia.org/wiki/Deno_(software). [Descargar Deno](https://deno.com/)
+
 ### 4.1 ¿Qué es Node.js? V8, Event Loop y arquitectura no bloqueante
-Node.js es un entorno de ejecución para JavaScript basado en el motor V8 de Chrome.  
+
+Node.js es un entorno de ejecución para JavaScript basado en el motor V8 de Chrome.
+
 - **Event Loop**: ciclo que procesa callbacks de manera asíncrona sin bloquear el hilo principal.  
 - **Arquitectura no bloqueante**: I/O asíncrono mediante callbacks/Promises, ideal para alta concurrencia.
 
@@ -1278,9 +1288,21 @@ console.log('Fin');
 // Salida: Inicio → Fin → Middle
 ```
 
+- [Ejemplo primer node](../4.node/ejemplos/1.primer-node/)
+
 ---
 
-### 4.2 Gestor de paquetes npm / yarn
+### 4.2 Gestor de paquetes npm / yarn / pnpm
+
+- `npm` (Node Package Manager) es el gestor de paquetes (módulos) más usado en el ecosistema de JS / TS
+- `pnpm` se basa en `npm` pero mejora el uso de memoria (usa cachés para no descargar todo cada vez para cada proyecto) => pero a veces hay módulos que no son completamente compatibles o requieren configuración adicional
+- `yarn` es una alternativa sólida a `npm`
+
+Según la encuesta de [StackOverflow de 2024](https://survey.stackoverflow.co/2024/technology#1-other-tools):
+
+- npm:  ~ 50%
+- yarn: ~ 20%
+- pnpm: ~ 9%
 
 * **`package.json`**: metadatos del proyecto, dependencias y scripts.
 * Versionado semántico (`MAJOR.MINOR.PATCH`).
@@ -1295,6 +1317,8 @@ console.log('Fin');
     }
   }
   ```
+
+- [Ejemplo de uso de NPM](../4.node/ejemplos/2.primer-npm/)
 
 ---
 
@@ -1321,6 +1345,14 @@ console.log('Fin');
   import { sum } from './sum.mjs';
   console.log(sum(2,3));
   ```
+> [!NOTE]
+> Si es export `default` no hace falta las llaves cuando se importa:
+> ```js
+> export default function sum(a, b) { return a + b; } 
+> ...
+> import sum from './sum.mjs'; 
+> ```
+> Solo un objeto puede ser default por módulo pero puede haber más exports no default
 
 ---
 
@@ -1329,18 +1361,28 @@ console.log('Fin');
 * **Síncrono**: bloqueo del hilo.
 
   ```js
-  const fs = require('fs');
+  // const fs = require('fs'); // CommonJS
+  import fs from 'fs'; // ES Modules
   const data = fs.readFileSync('./data.json', 'utf8');
   ```
 * **Asíncrono**: callbacks / Promises.
 
   ```js
-  const fs = require('fs').promises;
-  fs.readFile('./data.json', 'utf8')
+  import fs from 'fs'; // ES Modules
+  fs.readFile('./data.txt', 'utf8')
     .then(json => console.log(json))
     .catch(console.error);
   ```
 
+- [Ejemplo de uso de fs](../4.node/ejemplos/3.fs/)
+
+  Lab de `fs`:
+  
+  - Crear un archivo en blanco `.txt`
+  - Añadimos con un bucle los 10 primeros números
+  - En otro archivo, vamos a simular un log (`log.txt`), en cada línea pondremos: `Hora actual: hh:mm, evento, error`
+  - En un archivo `user.json` vamos a guadar un objeto usuario con camos de `email`, `nombre`, etc.
+  - Haremos un array para guardar varios usuarios en un JSON
 ---
 
 ### 4.5 Eventos y EventEmitter
